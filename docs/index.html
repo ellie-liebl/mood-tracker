@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mood · last 28 days (preview)</title>
+  <title>Mood · last 28 days</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       background: #120d1e;
       font-family: Georgia, 'Times New Roman', serif;
@@ -15,6 +16,7 @@
       min-height: 100vh;
       padding: 32px 24px;
     }
+
     .wrap {
       display: flex;
       flex-direction: column;
@@ -23,6 +25,7 @@
       width: 100%;
       max-width: 520px;
     }
+
     h1 {
       font-size: 0.75rem;
       font-weight: normal;
@@ -31,12 +34,14 @@
       color: #f6a47c;
       opacity: 0.75;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 7px;
       width: 100%;
     }
+
     .cell {
       aspect-ratio: 1;
       border-radius: 5px;
@@ -47,17 +52,21 @@
       transition: transform 0.12s ease, box-shadow 0.12s ease;
       position: relative;
     }
+
     .cell:hover {
       transform: scale(1.15);
       box-shadow: 0 6px 20px rgba(0,0,0,0.6);
       z-index: 10;
     }
+
     .score {
       font-size: 0.6rem;
       color: rgba(255,255,255,0.45);
       pointer-events: none;
       user-select: none;
     }
+
+    /* custom tooltip */
     .cell::after {
       content: attr(title);
       position: absolute;
@@ -76,22 +85,29 @@
       transition: opacity 0.1s ease;
       z-index: 20;
     }
-    .cell:hover::after { opacity: 1; }
+
+    .cell:hover::after {
+      opacity: 1;
+    }
+
     .legend {
       display: flex;
       align-items: center;
       gap: 5px;
     }
+
     .swatch {
       display: inline-block;
       width: 16px;
       height: 16px;
       border-radius: 3px;
     }
+
     .empty {
       margin-left: 6px;
       border: 1px solid rgba(169,189,198,0.3);
     }
+
     .updated {
       font-size: 0.65rem;
       color: #a9bdc6;
@@ -104,37 +120,93 @@
 <div class="wrap">
   <h1>mood &mdash; last 28 days</h1>
   <div class="grid">
-    <div class="cell" style="background:#a9bdc6" title="Apr 1"><span class="score"></span></div>
-    <div class="cell" style="background:#a9bdc6" title="Apr 2"><span class="score"></span></div>
-    <div class="cell" style="background:#a9bdc6" title="Apr 3"><span class="score"></span></div>
-    <div class="cell" style="background:#a9bdc6" title="Apr 4"><span class="score"></span></div>
-    <div class="cell" style="background:#b91657" title="Apr 5 · 5"><span class="score">5</span></div>
-    <div class="cell" style="background:#d92847" title="Apr 6 · 6"><span class="score">6</span></div>
-    <div class="cell" style="background:#921c5b" title="Apr 7 · 4"><span class="score">4</span></div>
-    <div class="cell" style="background:#ed503e" title="Apr 8 · 7"><span class="score">7</span></div>
-    <div class="cell" style="background:#d92847" title="Apr 9 · 6"><span class="score">6</span></div>
-    <div class="cell" style="background:#f47d57" title="Apr 10 · 8"><span class="score">8</span></div>
-    <div class="cell" style="background:#ed503e" title="Apr 11 · 7"><span class="score">7</span></div>
-    <div class="cell" style="background:#b91657" title="Apr 12 · 5"><span class="score">5</span></div>
-    <div class="cell" style="background:#f6a47c" title="Apr 13 · 9"><span class="score">9</span></div>
-    <div class="cell" style="background:#f47d57" title="Apr 14 · 8"><span class="score">8</span></div>
-    <div class="cell" style="background:#d92847" title="Apr 15 · 6"><span class="score">6</span></div>
-    <div class="cell" style="background:#ed503e" title="Apr 16 · 7"><span class="score">7</span></div>
-    <div class="cell" style="background:#f47d57" title="Apr 17 · 8"><span class="score">8</span></div>
-    <div class="cell" style="background:#f6a47c" title="Apr 18 · 9"><span class="score">9</span></div>
-    <div class="cell" style="background:#ed503e" title="Apr 19 · 7"><span class="score">7</span></div>
-    <div class="cell" style="background:#d92847" title="Apr 20 · 6"><span class="score">6</span></div>
-    <div class="cell" style="background:#f47d57" title="Apr 21 · 8"><span class="score">8</span></div>
-    <div class="cell" style="background:#f7c9aa" title="Apr 22 · 10"><span class="score">10</span></div>
-    <div class="cell" style="background:#f6a47c" title="Apr 23 · 9"><span class="score">9</span></div>
-    <div class="cell" style="background:#f47d57" title="Apr 24 · 8"><span class="score">8</span></div>
-    <div class="cell" style="background:#ed503e" title="Apr 25 · 7"><span class="score">7</span></div>
-    <div class="cell" style="background:#f47d57" title="Apr 26 · 8"><span class="score">8</span></div>
-    <div class="cell" style="background:#f6a47c" title="Apr 27 · 9"><span class="score">9</span></div>
-    <div class="cell" style="background:#ed503e" title="Apr 28 · 7"><span class="score">7</span></div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 1">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 2">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 3">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 4">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 5">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 6">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 7">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 8">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 9">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 10">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 11">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 12">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 13">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 14">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 15">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 16">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 17">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 18">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 19">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 20">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 21">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 22">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 23 · Craving connection, feeling lonely">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 24">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 25">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 26 · Not getting much done, feeling stagnant">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 27 · From devastated to hollow but determined to hypomanic; and all within 24 hours!">
+      <span class="score"></span>
+    </div>
+    <div class="cell" style="background:#a9bdc6" title="Apr 28 · Almost sleepy, very definitely pining. Might be hypomanic">
+      <span class="score"></span>
+    </div>
   </div>
   <div class="legend"><span class="swatch" style="background:#221331" title="Mood 1"></span><span class="swatch" style="background:#451c47" title="Mood 2"></span><span class="swatch" style="background:#691f55" title="Mood 3"></span><span class="swatch" style="background:#921c5b" title="Mood 4"></span><span class="swatch" style="background:#b91657" title="Mood 5"></span><span class="swatch" style="background:#d92847" title="Mood 6"></span><span class="swatch" style="background:#ed503e" title="Mood 7"></span><span class="swatch" style="background:#f47d57" title="Mood 8"></span><span class="swatch" style="background:#f6a47c" title="Mood 9"></span><span class="swatch" style="background:#f7c9aa" title="Mood 10"></span><span class="swatch empty" style="background:#a9bdc6" title="No entry"></span></div>
-  <div class="updated">preview — sample data</div>
+  <div class="updated">updated Apr 28, 2026 · 10:17 UTC</div>
 </div>
 </body>
 </html>
