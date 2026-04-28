@@ -24,7 +24,7 @@ DATABASE_ID       = os.environ.get("NOTION_DATABASE_ID", "350e4f9c7c2d80d9b3bbf2
 # These must match the exact property names in your Notion database.
 # Open your database, check the column headers, and update if needed.
 DATE_PROPERTY     = "Date"
-MOOD_PROPERTY     = "Mood Score"
+MOOD_PROPERTY     = "Score (1-10)"
 SUMMARY_PROPERTY  = "Summary"
 
 # ---------------------------------------------------------------------------
