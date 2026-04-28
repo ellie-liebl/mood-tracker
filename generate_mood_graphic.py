@@ -83,9 +83,15 @@ def fetch_mood_data():
         else:
             continue
 
-        # Mood score (number)
+        # Mood score (select: options named "1" through "10")
         mood_prop = props.get(MOOD_PROPERTY, {})
-        score = mood_prop.get("number") if mood_prop.get("type") == "number" else None
+        if mood_prop.get("type") == "select" and mood_prop.get("select"):
+            try:
+                score = int(mood_prop["select"]["name"])
+            except (ValueError, TypeError):
+                score = None
+        else:
+            score = None
 
         # Summary (rich text)
         summary_prop = props.get(SUMMARY_PROPERTY, {})
